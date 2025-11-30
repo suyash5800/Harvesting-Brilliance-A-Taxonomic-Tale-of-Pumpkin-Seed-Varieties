@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict - Seed</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+<style>
+ body
+  {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+.nav {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: flex-end;
+    background: #000;
+    color: white;
+}
+.nav a {
+    color: white;
+    padding: 14px 20px;
+    text-decoration: none;
+    text-align: center;
+}
+.nav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+.nav a.active {
+    border-bottom: 2px solid #ff3366;
+}
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+.breadcrumb {
+            margin: 10px 0;
+        }
+        .breadcrumb a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+h2 {
+    text-align: center;
+    color: #333;
+}
+label {
+    display: block;
+    margin: 15px 0 5px;
+}
+input[type="text"], input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #f4f4f4;
+}
+.submit-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+.submit-btn:hover {
+    background-color: #45a049;
+}
+.result {
+            background-color: white;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .result h2 {
+            margin-top: 0;
+        }
+        .image-container {
+            text-align: center;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+</style>
+</head>
+<body>
+  <div class="nav">
+    <a href="/">Home</a>
+    <a href="#about">About</a>
+    <a href="#about" class="active">Check</a>
+    <a href="#about">Contact</a>
+</div>
+<div class="container">
+  <div class="breadcrumb">
+    <a href="index.html">Home</a> / Predict
+</div>
+  <header>
+        <h1>Enter the Details</h1>
+    </header>
+    <main>
+        <form action="/predict" method="post">
+          <div>
+            <label for="area">Area:</label>
+            <input type="text" id="area" name="area" required>
+          </div>
+          <br>
+          <div>
+            <label for="perimeter">Perimeter:</label>
+            <input type="text" id="perimeter" name="perimeter" required>
+          </div>
+          <br>
+          <div>
+            <label for="major_axix_length">Major_Axis_Length:</label>
+            <input type="text" id="major_axis_length" name="major_axis_length" required>
+          </div>
+          <br>
+          <div>
+            <label for="solidity">Solidity(range:0-1):</label>
+            <input type="text" id="solidity" name="solidity" required>
+          </div>
+          <br>
+          <div>
+             <label for="extent">Extent(range: 0-1):</label>
+            <input type="text" id="extent" name="extent" required>
+          </div>
+          <br>
+          <div>
+            <label for="roundness">Roundness(range:0-1):</label>
+            <input type="text" id="roundness" name="roundness" required>
+          </div>
+          <br>
+          <div>
+             <label for="aspect">Aspect Ratio(range:0-3):</label>
+            <input type="text" id="aspect" name="aspect" required>
+          </div>
+          <br>
+          <div>
+            <label for="eccentricity">Eccentricity:</label>
+           <input type="text" id="eccentricity" name="eccentricity" required>
+         </div>
+         <br>
+         <div>
+          <label for="minor_axis_length">Minor_Axis_Length:</label>
+         <input type="text" id="minor_axis_length" name="minor_axis_length" required>
+       </div>
+       <br>
+          <div>
+             <label for="compactness">Compactness(range:0-1):</label>
+            <input type="text" id="compactness" name="compactness" required>
+          </div>
+          <br>
+            <button type="submit">Submit</button>
+        </form>
+        <div class="result">
+          <h2>Result</h2>
+          <p> {{prediction_text}}</p>
+      </div>
+      <div class="image-container">
+         <!--img src="../static/img/hero-bg.jpg" alt="Seeds"-->
+      </div> 
+    </main>
+    </div>
+   </body>
+</html>
